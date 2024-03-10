@@ -18,10 +18,10 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/*")
+                        .requestMatchers("/**")
                         .permitAll()
-                        .anyRequest()
-                        .authenticated()
+//                        .anyRequest()
+//                        .authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
         return httpSecurity.build();
@@ -30,7 +30,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("/*"));
+        configuration.setAllowedOrigins(List.of("/**"));
         configuration.setAllowedMethods((List.of("GET", "POST", "PUT", "DELETE")));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
