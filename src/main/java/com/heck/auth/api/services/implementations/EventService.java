@@ -30,6 +30,11 @@ public class EventService implements DatabaseService<Event> {
     }
 
     @Override
+    public Event update(Event record) {
+        return eventRepo.save(record);
+    }
+
+    @Override
     public boolean delete(long id) {
         return eventRepo.deleteById(id);
     }

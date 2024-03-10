@@ -6,5 +6,6 @@ public interface DatabaseService<T> {
     T create(T record);
     Collection<T> getAll();
     T getOne(long id);
+    T update(T record);
     boolean delete(long id);
 }
