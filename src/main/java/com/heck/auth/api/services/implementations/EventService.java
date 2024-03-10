@@ -26,7 +26,7 @@ public class EventService implements DatabaseService<Event> {
 
     @Override
     public Event getOne(long id) {
-        return eventRepo.findById(id).get();
+        return null;
     }
 
     @Override
@@ -36,6 +36,6 @@ public class EventService implements DatabaseService<Event> {
 
     @Override
     public boolean delete(long id) {
-        return eventRepo.deleteById(id);
+        return true;
     }
 }

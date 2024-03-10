@@ -14,13 +14,13 @@ import java.util.Set;
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long organizationId;
+    private long id;
 
     private String displayString;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User organizationCreator;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Prefix> prefixes;
 
 }

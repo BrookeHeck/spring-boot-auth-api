@@ -15,7 +15,7 @@ import java.util.Set;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long eventId;
+    private long id;
 
     private String name;
     private Date dateOfEvent;
@@ -26,10 +26,10 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User eventOwner;
-    @ManyToMany
-    private Set<User> collaborators;
-    @OneToMany(mappedBy = "event_id")
-    private Set<Table> tables;
-    @OneToMany(mappedBy = "event_id")
-    private Set<Guest> guests;
+//    @ManyToMany
+//    private Set<User> collaborators;
+//    @OneToMany(mappedBy = "event")
+//    private Set<Table> tables;
+//    @OneToMany(mappedBy = "event")
+//    private Set<Guest> guests;
 }

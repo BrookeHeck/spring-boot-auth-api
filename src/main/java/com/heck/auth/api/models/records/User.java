@@ -14,13 +14,13 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long userId;
+    private long id;
 
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     private String avatar;
-    @OneToMany(mappedBy = "user_id")
-    private Set<Event> ownedEvents;
+//    @OneToMany(mappedBy = "user")
+//    private Set<Event> ownedEvents;
 }

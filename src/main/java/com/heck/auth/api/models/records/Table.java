@@ -14,7 +14,7 @@ import java.util.Set;
 public class Table {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long tableId;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "event_id")
@@ -22,8 +22,8 @@ public class Table {
     private int maxNumberOfPeople;
     private int xLocation;
     private int yLocation;
-    @OneToMany(mappedBy = "table_id")
+    @OneToMany(mappedBy = "table")
     private Set<Guest> guests;
-    @OneToMany(mappedBy = "table_id")
+    @OneToMany(mappedBy = "table")
     private Set<Invitee> invitees;
 }

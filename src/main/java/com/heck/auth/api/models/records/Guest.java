@@ -14,7 +14,7 @@ import java.util.Set;
 public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long guestId;
+    private long id;
 
     private String firstName;
     private String lastName;
@@ -25,7 +25,7 @@ public class Guest {
     private String phone;
     private String email;
     private boolean confirmed;
-    @OneToMany(mappedBy = "guest_id")
+    @OneToMany(mappedBy = "guest")
     private Set<Invitee> invitees;
     @ManyToOne
     @JoinColumn(name = "event_id")

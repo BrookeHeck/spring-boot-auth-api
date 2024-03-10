@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Invitee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long inviteeId;
+    private long id;
 
     private String firstName;
     private String lastName;
