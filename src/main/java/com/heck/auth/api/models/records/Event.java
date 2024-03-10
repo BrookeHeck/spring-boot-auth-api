@@ -1,4 +1,4 @@
-package com.heck.auth.api.records;
+package com.heck.auth.api.models.records;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,14 +12,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class User {
+public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private long id;
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private String avatar;
+    private String name;
+    private int personCount;
 }
