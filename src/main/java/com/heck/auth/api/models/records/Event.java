@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -14,9 +16,10 @@ import java.util.Set;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private long eventId;
+    private UUID eventId;
 
     private String name;
+    private Date dateOfEvent;
     private int personCount;
     @Embedded
     private Address address;

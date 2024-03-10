@@ -19,7 +19,8 @@ public class Guest {
     private String firstName;
     private String lastName;
     private String prefix;
-    private String organization;
+    @ManyToOne
+    private Organization organization;
     private String phone;
     private String email;
     private boolean confirmed;
