@@ -20,7 +20,7 @@ public class Organization {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User organizationCreator;
-    @OneToMany
+    @ManyToMany
     private Set<Prefix> prefixes;
 
 }
