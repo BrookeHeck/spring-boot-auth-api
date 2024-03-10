@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,8 +14,8 @@ import java.util.UUID;
 @Entity
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID eventId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long eventId;
 
     private String name;
     private Date dateOfEvent;
