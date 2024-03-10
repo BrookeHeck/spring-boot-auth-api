@@ -21,9 +21,11 @@ public class Event {
     @Embedded
     private Address address;
     private String description;
-    @OneToOne
-    private User eventOwners;
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User eventOwner;
+    @ManyToMany
     private Set<User> collaborators;
 
+    // could add another @ManyToMany annotation for Guests when that record is created
 }
