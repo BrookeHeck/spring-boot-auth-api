@@ -29,6 +29,8 @@ public class Event {
     private User eventOwner;
     @ManyToMany
     private Set<User> collaborators;
+    @OneToMany(mappedBy = "event_id")
+    private Set<Table> tables;
 
     // could add another @ManyToMany annotation for Guests when that record is created
 }
