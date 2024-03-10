@@ -14,7 +14,7 @@ import java.util.Set;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private long id;
+    private long eventId;
 
     private String name;
     private int personCount;
