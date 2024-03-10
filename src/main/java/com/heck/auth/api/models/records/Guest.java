@@ -20,11 +20,15 @@ public class Guest {
     private String lastName;
     private String prefix;
     @ManyToOne
+    @JoinColumn(name = "organization_id")
     private Organization organization;
     private String phone;
     private String email;
     private boolean confirmed;
     @OneToMany(mappedBy = "guest_id")
     private Set<Invitee> invitees;
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
 }
