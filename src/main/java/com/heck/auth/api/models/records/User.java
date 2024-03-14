@@ -21,6 +21,9 @@ public class User {
     private String email;
     private String password;
     private String avatar;
+
+
+
 //    @OneToMany(mappedBy = "user")
 //    private Set<Event> ownedEvents;
 }

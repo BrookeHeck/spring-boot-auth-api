@@ -1,26 +1,31 @@
 package com.heck.auth.api.models.records;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "ORGANIZATION")
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ORGANIZATION_ID")
     private long id;
 
-    private String displayString;
+    @Column(name = "ORGANIZATION_NAME")
+    private String organizationName;
+
+    @Column(name = "ORGANIZATION_CREATOR")
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     private User organizationCreator;
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Prefix> prefixes;
+
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    private Set<Prefix> prefixes;
 
 }
