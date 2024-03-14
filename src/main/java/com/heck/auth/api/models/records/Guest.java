@@ -23,14 +23,12 @@ public class Guest {
     @Column(name = "GUEST_LAST_NAME")
     private String lastName;
 
-    @Column(name = "GUEST_PREFIX")
     @ManyToOne
-    @JoinColumn(name = "PREFIX_ID")
+    @JoinColumn(name = "GUEST_PREFIX")
     private Prefix prefix;
 
-    @Column(name = "GUEST_ORGANIZATION")
     @ManyToOne
-    @JoinColumn(name = "ORGANIZATION_ID")
+    @JoinColumn(name = "GUEST_ORGANIZATION")
     private Organization organization;
 
     @Column(name = "GUEST_PHONE")
@@ -42,8 +40,8 @@ public class Guest {
     @Column(name = "CONFIRMATION")
     private boolean confirmed;
 
-    @Column(name = "GUEST_ASSIGNED_TABLE")
     @ManyToOne
+    @JoinColumn(name = "GUEST_ASSIGNED_TABLE_ID")
     private EventTable assignedEventTable;
 
 

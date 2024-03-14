@@ -16,10 +16,9 @@ public class EventTable {
     @Column(name = "TABLE_ID")
     private long id;
 
-    @Column(name = "TABLE_EVENT_ID")
     @ManyToOne
-    @JoinColumn(name = "EVENT_ID")
-    private Event event;
+    @JoinColumn(name = "ATTACHED_EVENT")
+    private Event attachedEevent;
 
     @Column(name = "MAX_NUMBER_PEOPLE")
     private int maxNumberOfPeople;

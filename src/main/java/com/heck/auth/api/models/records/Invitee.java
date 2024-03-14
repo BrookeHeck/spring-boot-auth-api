@@ -23,18 +23,16 @@ public class Invitee {
     @Column(name = "INVITEE_LAST_NAME")
     private String lastName;
 
-    @Column(name = "INVITEE_PREFIX")
     @ManyToOne
-    @JoinColumn(name = "PREFIX_ID")
+    @JoinColumn(name = "INVITEE_PREFIX")
     private Prefix prefix;
 
-    @Column(name = "GUEST_INVITED_BY")
     @ManyToOne
-    @JoinColumn(name = "GUEST_ID")
+    @JoinColumn(name = "GUEST_INVITED_BY")
     private Guest guestInvitedBy;
 
-    @Column(name = "INVITEE_ASSIGNED_TABLE")
     @ManyToOne
+    @JoinColumn(name = "INVITEE_ASSIGNED_TABLE")
     private EventTable assignedEventTable;
 
 }

@@ -11,16 +11,27 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "USER")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_ID")
     private long id;
 
+    @Column(name = "USER_FIRST_NAME")
     private String firstName;
+
+    @Column(name = "USER_LAST_NAME")
     private String lastName;
+
+    @Column(name = "USER_EMAIL")
     private String email;
+
+    @Column(name = "PASSWORD")
     private String password;
-    private String avatar;
+
+    @Column(name = "AVATAR_IMG_NAME")
+    private String avatarImgName;
 
 
 

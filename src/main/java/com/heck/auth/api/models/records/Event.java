@@ -32,7 +32,7 @@ public class Event {
     @AttributeOverrides({
             @AttributeOverride(name = "street", column = @Column(name = "EVENT_STREET")),
             @AttributeOverride(name = "city", column = @Column(name = "EVENT_CITY")),
-            @AttributeOverride(name = "state", column = @Column(name = "EVENT_NAME")),
+            @AttributeOverride(name = "state", column = @Column(name = "EVENT_STATE")),
             @AttributeOverride(name = "zipcode", column = @Column(name = "EVENT_ZIPCODE"))
     })
     private Address address;
@@ -41,8 +41,7 @@ public class Event {
     private String description;
 
     @ManyToOne
-    @Column(name = "EVENT_OWNER")
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "EVENT_OWNER_USER")
     private User eventOwner;
 
 

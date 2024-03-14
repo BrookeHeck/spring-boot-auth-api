@@ -20,9 +20,8 @@ public class Organization {
     @Column(name = "ORGANIZATION_NAME")
     private String organizationName;
 
-    @Column(name = "ORGANIZATION_CREATOR")
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "ORGANIZATION_CREATOR_USER")
     private User organizationCreator;
 
 //    @ManyToMany(fetch = FetchType.LAZY)
