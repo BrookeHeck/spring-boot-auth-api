@@ -3,12 +3,14 @@ package com.heck.auth.api.services.implementations;
 import com.heck.auth.api.models.records.Guest;
 import com.heck.auth.api.repositories.GuestRepository;
 import com.heck.auth.api.services.DatabaseService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class GuestService implements DatabaseService<Guest> {
     private final GuestRepository guestRepository;

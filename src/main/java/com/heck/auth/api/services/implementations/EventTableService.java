@@ -3,12 +3,14 @@ package com.heck.auth.api.services.implementations;
 import com.heck.auth.api.models.records.EventTable;
 import com.heck.auth.api.repositories.EventTableRepository;
 import com.heck.auth.api.services.DatabaseService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class EventTableService implements DatabaseService<EventTable> {
 
