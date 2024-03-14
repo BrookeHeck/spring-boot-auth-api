@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "planner")
-public class User {
+public class Planner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "planner_id")

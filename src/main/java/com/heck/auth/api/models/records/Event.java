@@ -42,5 +42,5 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "planner_id")
-    private User eventOwner;
+    private Planner eventOwner;
 }
