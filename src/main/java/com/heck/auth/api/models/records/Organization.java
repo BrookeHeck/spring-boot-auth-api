@@ -24,7 +24,7 @@ public class Organization {
 
     @ManyToOne
     @JoinColumn(name = "planner_id")
-    private User organizationCreator;
+    private Planner organizationCreator;
 
     @ManyToMany
     @JoinTable(
