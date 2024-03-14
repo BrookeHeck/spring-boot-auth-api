@@ -22,8 +22,7 @@ public class Prefix {
     @Column(name = "prefix_display")
     private String prefixDisplay;
 
-//
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    private Set<Organization> organization;
+    @ManyToMany(mappedBy = "prefixes")
+    private Set<Organization> organizations;
 
 }

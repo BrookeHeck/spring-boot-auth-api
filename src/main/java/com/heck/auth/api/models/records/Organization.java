@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -24,7 +26,12 @@ public class Organization {
     @JoinColumn(name = "planner_id")
     private User organizationCreator;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    private Set<Prefix> prefixes;
+    @ManyToMany
+    @JoinTable(
+            name = "organization_prefixes",
+            joinColumns = @JoinColumn(name = "organization_id"),
+            inverseJoinColumns = @JoinColumn(name = "prefix_id")
+    )
+    private Set<Prefix> prefixes;
 
 }

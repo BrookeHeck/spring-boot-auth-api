@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -44,11 +46,11 @@ public class Guest {
     @JoinColumn(name = "event_table_id")
     private EventTable assignedEventTable;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "guestInvitedBy")
+    private Set<Invitee> invitees;
 
-//    @OneToMany(mappedBy = "guest")
-//    private Set<Invitee> invitees;
-//    @ManyToOne
-//    @JoinColumn(name = "event_id")
-//    private Event event;
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
 }

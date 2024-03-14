@@ -43,13 +43,4 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "planner_id")
     private User eventOwner;
-
-
-
-//    @ManyToMany
-//    private Set<User> collaborators;
-//    @OneToMany(mappedBy = "event")
-//    private Set<Table> tables;
-//    @OneToMany(mappedBy = "event")
-//    private Set<Guest> guests;
 }
