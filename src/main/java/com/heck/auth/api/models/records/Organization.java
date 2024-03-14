@@ -10,18 +10,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "ORGANIZATION")
+@Table(name = "organization")
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ORGANIZATION_ID")
+    @Column(name = "organization_id")
     private long id;
 
-    @Column(name = "ORGANIZATION_NAME")
+    @Column(name = "organization_name")
     private String organizationName;
 
     @ManyToOne
-    @JoinColumn(name = "ORGANIZATION_CREATOR_USER")
+    @JoinColumn(name = "planner_id")
     private User organizationCreator;
 
 //    @ManyToMany(fetch = FetchType.LAZY)

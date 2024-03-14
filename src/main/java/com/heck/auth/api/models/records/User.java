@@ -5,32 +5,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "USER")
+@Table(name = "planner")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
+    @Column(name = "planner_id")
     private long id;
 
-    @Column(name = "USER_FIRST_NAME")
+    @Column(name = "planner_first_name")
     private String firstName;
 
-    @Column(name = "USER_LAST_NAME")
+    @Column(name = "planner_last_name")
     private String lastName;
 
-    @Column(name = "USER_EMAIL")
+    @Column(name = "planner_email")
     private String email;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "AVATAR_IMG_NAME")
+    @Column(name = "avatar_img_name")
     private String avatarImgName;
 
 

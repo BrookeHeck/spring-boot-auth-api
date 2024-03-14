@@ -12,36 +12,36 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "EVENT")
+@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "EVENT_ID")
+    @Column(name = "event_id")
     private long id;
 
-    @Column(name = "EVENT_NAME")
+    @Column(name = "event_name")
     private String name;
 
-    @Column(name = "DATE_OF_EVENT")
+    @Column(name = "date_of_event")
     private Date dateOfEvent;
 
-    @Column(name = "EVENT_PERSON_COUNT")
+    @Column(name = "event_person_count")
     private int personCount;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride(name = "street", column = @Column(name = "EVENT_STREET")),
-            @AttributeOverride(name = "city", column = @Column(name = "EVENT_CITY")),
-            @AttributeOverride(name = "state", column = @Column(name = "EVENT_STATE")),
-            @AttributeOverride(name = "zipcode", column = @Column(name = "EVENT_ZIPCODE"))
+            @AttributeOverride(name = "street", column = @Column(name = "event_location_street")),
+            @AttributeOverride(name = "city", column = @Column(name = "event_location_city")),
+            @AttributeOverride(name = "state", column = @Column(name = "event_location_state")),
+            @AttributeOverride(name = "zipcode", column = @Column(name = "event_location_zipcode"))
     })
-    private Address address;
+    private Address eventLocation;
 
-    @Column(name = "EVENT_DESCRIPTION")
+    @Column(name = "event_description")
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "EVENT_OWNER_USER")
+    @JoinColumn(name = "planner_id")
     private User eventOwner;
 
 

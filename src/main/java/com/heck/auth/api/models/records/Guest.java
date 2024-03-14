@@ -10,38 +10,38 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "GUEST")
+@Table(name = "guest")
 public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "GUEST_ID")
+    @Column(name = "guest_id")
     private long id;
 
-    @Column(name = "GUEST_FIRST_NAME")
+    @Column(name = "guest_first_name")
     private String firstName;
 
-    @Column(name = "GUEST_LAST_NAME")
+    @Column(name = "guest_last_name")
     private String lastName;
 
     @ManyToOne
-    @JoinColumn(name = "GUEST_PREFIX")
+    @JoinColumn(name = "prefix_id")
     private Prefix prefix;
 
     @ManyToOne
-    @JoinColumn(name = "GUEST_ORGANIZATION")
+    @JoinColumn(name = "organization_id")
     private Organization organization;
 
-    @Column(name = "GUEST_PHONE")
+    @Column(name = "guest_phone")
     private String phone;
 
-    @Column(name = "GEUST_EMAIL")
+    @Column(name = "guest_email")
     private String email;
 
-    @Column(name = "CONFIRMATION")
-    private boolean confirmed;
+    @Column(name = "attendance_confirmed")
+    private boolean attendanceConfirmed;
 
     @ManyToOne
-    @JoinColumn(name = "GUEST_ASSIGNED_TABLE_ID")
+    @JoinColumn(name = "event_table_id")
     private EventTable assignedEventTable;
 
 

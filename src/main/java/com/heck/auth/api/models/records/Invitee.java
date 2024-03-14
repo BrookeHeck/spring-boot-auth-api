@@ -10,29 +10,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "INVITEE")
+@Table(name = "invitee")
 public class Invitee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "INVITEE_ID")
+    @Column(name = "invitee_id")
     private long id;
 
-    @Column(name = "INVITEE_FIRST_NAME")
+    @Column(name = "invitee_first_name")
     private String firstName;
 
-    @Column(name = "INVITEE_LAST_NAME")
+    @Column(name = "invitee_last_name")
     private String lastName;
 
     @ManyToOne
-    @JoinColumn(name = "INVITEE_PREFIX")
+    @JoinColumn(name = "prefix_id")
     private Prefix prefix;
 
     @ManyToOne
-    @JoinColumn(name = "GUEST_INVITED_BY")
+    @JoinColumn(name = "guest_id")
     private Guest guestInvitedBy;
 
     @ManyToOne
-    @JoinColumn(name = "INVITEE_ASSIGNED_TABLE")
+    @JoinColumn(name = "event_table_id")
     private EventTable assignedEventTable;
 
 }

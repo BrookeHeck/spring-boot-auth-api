@@ -9,24 +9,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "EVENT_TABLE")
+@Table(name = "event_table")
 public class EventTable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TABLE_ID")
+    @Column(name = "event_table_id")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "ATTACHED_EVENT")
+    @JoinColumn(name = "event_id")
     private Event attachedEevent;
 
-    @Column(name = "MAX_NUMBER_PEOPLE")
+    @Column(name = "max_number_of_people")
     private int maxNumberOfPeople;
 
-    @Column(name = "X_LOCATION")
+    @Column(name = "x_location")
     private int xLocation;
 
-    @Column(name = "Y_LOCATION")
+    @Column(name = "y_location")
     private int yLocation;
 
 //

@@ -12,14 +12,14 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "PREFIX")
+@Table(name = "prefix")
 public class Prefix {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PREFIX_ID")
+    @Column(name = "prefix_id")
     private long id;
 
-    @Column(name = "PREFIX_DISPLAY")
+    @Column(name = "prefix_display")
     private String prefixDisplay;
 
 //
