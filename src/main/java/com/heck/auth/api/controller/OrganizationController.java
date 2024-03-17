@@ -3,10 +3,7 @@ package com.heck.auth.api.controller;
 import com.heck.auth.api.models.records.Organization;
 import com.heck.auth.api.services.implementations.OrganizationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -24,6 +21,16 @@ public class OrganizationController {
     @GetMapping(path = "get-all")
     public Collection<Organization> getAllOrganizations() {
         return organizationService.getAll();
+    }
+
+    @PostMapping(path = "create")
+    public Organization createOrganization(@RequestBody Organization organization) {
+        return organizationService.create(organization);
+    }
+
+    @PutMapping(path = "update")
+    public Organization updateOrganization(@RequestBody Organization organization) {
+        return organizationService.create(organization);
     }
 
     
