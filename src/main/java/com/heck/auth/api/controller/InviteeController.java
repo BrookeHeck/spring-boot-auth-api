@@ -33,5 +33,8 @@ public class InviteeController {
         return inviteeService.update(invitee);
     }
 
-    
+    @DeleteMapping(path = "delete/{inviteeId}")
+    public boolean deleteInvitee(@PathVariable("inviteeId") Long inviteeId) {
+        return inviteeService.delete(inviteeId);
+    }
 }
