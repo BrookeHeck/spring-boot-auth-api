@@ -32,4 +32,9 @@ public class EventTableController {
     public EventTable updateEventTable(@RequestBody EventTable eventTable) {
         return eventTableService.update(eventTable);
     }
+
+    @DeleteMapping(path = "delete/{eventTableId}")
+    public boolean deleteEventTable(@PathVariable("eventTableId") Long eventTableId) {
+        return eventTableService.delete(eventTableId);
+    }
 }
