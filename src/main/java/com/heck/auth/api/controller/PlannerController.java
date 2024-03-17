@@ -24,6 +24,11 @@ public class PlannerController {
         return plannerService.getAll();
     }
 
+    @GetMapping(path = "get-event-contributors/{eventId}")
+    public Collection<Planner> getEventContributors(@PathVariable("eventId") Long eventId) {
+        return plannerService.getEventContributors(eventId);
+    }
+
     @PostMapping(path = "create")
     public Planner createPlanner(@RequestBody Planner planner) {
         return plannerService.create(planner);

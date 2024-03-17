@@ -1,13 +1,16 @@
 package com.heck.auth.api.services.implementations;
 
+import com.heck.auth.api.models.records.Event;
 import com.heck.auth.api.models.records.Planner;
 import com.heck.auth.api.repositories.PlannerRepository;
 import com.heck.auth.api.services.DatabaseService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional
@@ -39,5 +42,9 @@ public class PlannerService implements DatabaseService<Planner> {
     public boolean delete(long id) {
         plannerRepository.deleteById(id);
         return true;
+    }
+
+    public List<Planner> getEventContributors(Long eventId) {
+        return plannerRepository.findPlannersByEventsContributedIn(eventId);
     }
 }
