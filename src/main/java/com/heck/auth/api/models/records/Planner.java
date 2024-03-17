@@ -31,8 +31,4 @@ public class Planner {
     @Column(name = "avatar_img_name")
     private String avatarImgName;
 
-
-
-//    @OneToMany(mappedBy = "user")
-//    private Set<Event> ownedEvents;
 }
