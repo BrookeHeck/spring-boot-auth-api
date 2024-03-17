@@ -22,4 +22,7 @@ public class Prefix {
     @Column(name = "prefix_display")
     private String prefixDisplay;
 
+    @ManyToMany(mappedBy = "prefixes")
+    Set<Organization> organizations;
+
 }

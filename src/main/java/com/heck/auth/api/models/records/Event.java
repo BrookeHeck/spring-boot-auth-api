@@ -46,6 +46,10 @@ public class Event {
     private Planner eventOwner;
 
     @ManyToMany
+    @JoinTable(name = "event_contributors",
+        joinColumns = @JoinColumn(name = "event_id"),
+        inverseJoinColumns = @JoinColumn(name = "planner_id")
+    )
     private Set<Planner> contributors;
 
 }

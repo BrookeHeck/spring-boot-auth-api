@@ -29,8 +29,8 @@ public class Organization {
     @ManyToMany
     @JoinTable(
             name = "organization_prefixes",
-            joinColumns = @JoinColumn(name = "organization_id"),
-            inverseJoinColumns = @JoinColumn(name = "prefix_id")
+            joinColumns = @JoinColumn(name = "prefix_id"),
+            inverseJoinColumns = @JoinColumn(name = "organization_id")
     )
     private Set<Prefix> prefixes;
 

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,5 +32,11 @@ public class Planner {
 
     @Column(name = "avatar_img_name")
     private String avatarImgName;
+
+    @OneToMany(mappedBy = "eventOwner")
+    private Set<Event> eventsOwned;
+
+    @ManyToMany(mappedBy = "contributors")
+    private Set<Event> eventsContributed;
 
 }
