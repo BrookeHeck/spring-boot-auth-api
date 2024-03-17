@@ -33,5 +33,8 @@ public class OrganizationController {
         return organizationService.create(organization);
     }
 
-    
+    @DeleteMapping(path = "delete/{organizationId}")
+    public boolean deleteOrganization(@PathVariable("organizationId") Long organizationId) {
+        return organizationService.delete(organizationId);
+    }
 }
