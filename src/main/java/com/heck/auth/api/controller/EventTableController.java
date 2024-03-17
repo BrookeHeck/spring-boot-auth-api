@@ -3,10 +3,7 @@ package com.heck.auth.api.controller;
 import com.heck.auth.api.models.records.EventTable;
 import com.heck.auth.api.services.implementations.EventTableService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -24,5 +21,15 @@ public class EventTableController {
     @GetMapping(path = "get-all")
     public Collection<EventTable> getEventTables() {
         return eventTableService.getAll();
+    }
+
+    @PostMapping(path = "create")
+    public EventTable createEventTable(@RequestBody EventTable eventTable) {
+        return eventTableService.create(eventTable);
+    }
+
+    @PutMapping(path = "update")
+    public EventTable updateEventTable(@RequestBody EventTable eventTable) {
+        return eventTableService.update(eventTable);
     }
 }
