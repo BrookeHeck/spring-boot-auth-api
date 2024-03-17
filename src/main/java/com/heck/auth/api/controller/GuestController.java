@@ -32,4 +32,9 @@ public class GuestController {
     public Guest updateGuest(@RequestBody Guest guest) {
         return guestService.update(guest);
     }
+
+    @DeleteMapping(path = "delete/{guestId}")
+    public boolean deleteGuest(@PathVariable("guestId") Long guestId) {
+        return guestService.delete(guestId);
+    }
 }
