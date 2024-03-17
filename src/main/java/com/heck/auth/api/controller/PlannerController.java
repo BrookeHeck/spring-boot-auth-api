@@ -23,4 +23,14 @@ public class PlannerController {
     public Collection<Planner> getPlannersForEvent() {
         return plannerService.getAll();
     }
+
+    @PostMapping(path = "create")
+    public Planner createPlanner(@RequestBody Planner planner) {
+        return plannerService.create(planner);
+    }
+
+    @PostMapping(path = "update")
+    public Planner updatePlanner(@RequestBody Planner planner) {
+        return plannerService.update(planner);
+    }
 }
