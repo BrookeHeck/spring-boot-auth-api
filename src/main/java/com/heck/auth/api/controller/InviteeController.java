@@ -3,10 +3,7 @@ package com.heck.auth.api.controller;
 import com.heck.auth.api.models.records.Invitee;
 import com.heck.auth.api.services.implementations.InviteeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -24,6 +21,16 @@ public class InviteeController {
     @GetMapping(path = "get-all")
     public Collection<Invitee> getAllInvitees() {
         return inviteeService.getAll();
+    }
+
+    @PostMapping(path = "create")
+    public Invitee createInvitee(@RequestBody Invitee invitee) {
+        return inviteeService.create(invitee);
+    }
+
+    @PutMapping(path = "update")
+    public Invitee updateInvitee(@RequestBody Invitee invitee) {
+        return inviteeService.update(invitee);
     }
 
     
