@@ -3,10 +3,7 @@ package com.heck.auth.api.controller;
 import com.heck.auth.api.models.records.Guest;
 import com.heck.auth.api.services.implementations.GuestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -25,5 +22,14 @@ public class GuestController {
     public Collection<Guest> getAllGuests() {
         return guestService.getAll();
     }
-    
+
+    @PostMapping(path = "create")
+    public Guest createGuest(@RequestBody Guest guest) {
+        return guestService.create(guest);
+    }
+
+    @PutMapping(path = "update")
+    public Guest updateGuest(@RequestBody Guest guest) {
+        return guestService.update(guest);
+    }
 }
