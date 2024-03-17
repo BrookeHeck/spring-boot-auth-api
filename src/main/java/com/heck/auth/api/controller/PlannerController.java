@@ -33,4 +33,9 @@ public class PlannerController {
     public Planner updatePlanner(@RequestBody Planner planner) {
         return plannerService.update(planner);
     }
+
+    @DeleteMapping(path = "delete/{plannerId}")
+    public boolean deletePlanner(@PathVariable("plannerId") Long plannerId) {
+        return plannerService.delete(plannerId);
+    }
 }
