@@ -10,5 +10,6 @@ import java.util.Set;
 
 public interface PlannerRepository extends JpaRepository<Planner, Long> {
 
-    List<Planner> findPlannersByEventsContributedIn(Long eventId);
+    @Query(value = "select p from Planner p where ?1 in p.eventsContributed")
+    List<Planner> findContributorsForEventId(Long eventId);
 }

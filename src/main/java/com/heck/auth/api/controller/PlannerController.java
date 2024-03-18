@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,7 +25,7 @@ public class PlannerController {
 
     @GetMapping(path = "get-event-contributors/{eventId}")
     public Collection<Planner> getEventContributors(@PathVariable("eventId") Long eventId) {
-        return plannerService.getEventContributors(eventId);
+        return plannerService.findContributorsForEventId(eventId);
     }
 
     @PostMapping(path = "create")

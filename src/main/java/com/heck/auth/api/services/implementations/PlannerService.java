@@ -44,7 +44,7 @@ public class PlannerService implements DatabaseService<Planner> {
         return true;
     }
 
-    public List<Planner> getEventContributors(Long eventId) {
-        return plannerRepository.findPlannersByEventsContributedIn(eventId);
+    public List<Planner> findContributorsForEventId(Long eventId) {
+        return plannerRepository.findContributorsForEventId(eventId);
     }
 }
