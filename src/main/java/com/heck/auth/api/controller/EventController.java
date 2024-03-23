@@ -1,7 +1,7 @@
 package com.heck.auth.api.controller;
 
 import com.heck.auth.api.models.records.Event;
-import com.heck.auth.api.services.implementations.EventService;
+import com.heck.auth.api.services.implementations.EventServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("event")
 public class EventController {
-    private final EventService eventService;
+    private final EventServiceImpl eventService;
 
     @GetMapping(path = "/get/{eventId}")
     public Event getEventById(@PathVariable("eventId") Long eventId) {

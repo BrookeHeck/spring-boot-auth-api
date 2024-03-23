@@ -1,10 +1,8 @@
 package com.heck.auth.api.controller;
 
-import com.heck.auth.api.models.query.EventContributorsData;
-import com.heck.auth.api.models.records.Event;
 import com.heck.auth.api.models.records.Planner;
-import com.heck.auth.api.services.implementations.EventService;
-import com.heck.auth.api.services.implementations.PlannerService;
+import com.heck.auth.api.services.implementations.EventServiceImpl;
+import com.heck.auth.api.services.implementations.PlannerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +12,8 @@ import java.util.Collection;
 @RestController
 @RequestMapping("planner")
 public class PlannerController {
-    private final PlannerService plannerService;
-    private final EventService eventService;
+    private final PlannerServiceImpl plannerService;
+    private final EventServiceImpl eventService;
 
     @GetMapping(path = "get/{plannerId}")
     public Planner getPlanner(@PathVariable("plannerId") Long plannerId) {

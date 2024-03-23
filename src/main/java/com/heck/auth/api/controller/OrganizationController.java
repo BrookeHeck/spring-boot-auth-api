@@ -1,7 +1,7 @@
 package com.heck.auth.api.controller;
 
 import com.heck.auth.api.models.records.Organization;
-import com.heck.auth.api.services.implementations.OrganizationService;
+import com.heck.auth.api.services.implementations.OrganizationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("organization")
 public class OrganizationController {
-    private final OrganizationService organizationService;
+    private final OrganizationServiceImpl organizationService;
 
     @GetMapping(path = "get/{organizationId}")
     public Organization getOrganizationById(@PathVariable("organizationId") Long organizationId) {

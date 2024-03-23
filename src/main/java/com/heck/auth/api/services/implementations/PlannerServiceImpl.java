@@ -1,26 +1,24 @@
 package com.heck.auth.api.services.implementations;
 
-import com.heck.auth.api.models.query.EventContributorsData;
 import com.heck.auth.api.models.records.Event;
 import com.heck.auth.api.models.records.Planner;
 import com.heck.auth.api.repositories.PlannerRepository;
-import com.heck.auth.api.services.DatabaseService;
+import com.heck.auth.api.services.CrudService;
+import com.heck.auth.api.services.PlannerService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class PlannerService implements DatabaseService<Planner> {
+public class PlannerServiceImpl implements CrudService<Planner>, PlannerService {
     private final PlannerRepository plannerRepository;
-    private final EventService eventService;
+    private final EventServiceImpl eventService;
 
     @Override
     public Planner create(Planner record) {
@@ -48,6 +46,7 @@ public class PlannerService implements DatabaseService<Planner> {
         return true;
     }
 
+    @Override
     public Set<Planner> findContributorsForEventId(Long eventId) {
         try {
             Event event = eventService.getOne(eventId);

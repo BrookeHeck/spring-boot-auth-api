@@ -2,7 +2,7 @@ package com.heck.auth.api.services.implementations;
 
 import com.heck.auth.api.models.records.Event;
 import com.heck.auth.api.repositories.EventRepository;
-import com.heck.auth.api.services.DatabaseService;
+import com.heck.auth.api.services.CrudService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 @Transactional
 @Service
-public class EventService implements DatabaseService<Event> {
+public class EventServiceImpl implements CrudService<Event> {
     private final EventRepository eventRepo;
     @Override
     public Event create(Event record) {
