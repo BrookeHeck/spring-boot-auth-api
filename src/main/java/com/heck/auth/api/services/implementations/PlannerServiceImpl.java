@@ -57,4 +57,9 @@ public class PlannerServiceImpl implements CrudService<Planner>, PlannerService 
             return new HashSet<>();
         }
     }
+
+    @Override
+    public Planner findPlannerByEmail(String email) {
+        return plannerRepository.findPlannerByEmail(email);
+    }
 }

@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Set;
 
 public interface PlannerRepository extends JpaRepository<Planner, Long> {
-
-
+    Planner findPlannerByEmail(String email);
 }
