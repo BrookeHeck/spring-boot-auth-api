@@ -23,6 +23,6 @@ public class Prefix {
     private String prefixDisplay;
 
     @ManyToMany(mappedBy = "prefixes")
-    private Set<Organization> organizations;
+    Set<Organization> organizations;
 
 }

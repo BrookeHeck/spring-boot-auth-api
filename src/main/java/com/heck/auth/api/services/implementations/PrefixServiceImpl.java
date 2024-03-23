@@ -2,7 +2,7 @@ package com.heck.auth.api.services.implementations;
 
 import com.heck.auth.api.models.records.Prefix;
 import com.heck.auth.api.repositories.PrefixRepository;
-import com.heck.auth.api.services.DatabaseService;
+import com.heck.auth.api.services.CrudService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.Collection;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class PrefixService implements DatabaseService<Prefix> {
+public class PrefixServiceImpl implements CrudService<Prefix> {
     private final PrefixRepository prefixRepository;
 
     @Override

@@ -1,18 +1,19 @@
 package com.heck.auth.api.controller;
 
 import com.heck.auth.api.models.records.Planner;
-import com.heck.auth.api.services.implementations.PlannerService;
+import com.heck.auth.api.services.implementations.EventServiceImpl;
+import com.heck.auth.api.services.implementations.PlannerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("planner")
 public class PlannerController {
-    private final PlannerService plannerService;
+    private final PlannerServiceImpl plannerService;
+    private final EventServiceImpl eventService;
 
     @GetMapping(path = "get/{plannerId}")
     public Planner getPlanner(@PathVariable("plannerId") Long plannerId) {
@@ -22,6 +23,11 @@ public class PlannerController {
     @GetMapping(path = "get-all")
     public Collection<Planner> getPlannersForEvent() {
         return plannerService.getAll();
+    }
+
+    @GetMapping(path = "get-event-contributors/{eventId}")
+    public Collection<Planner> getEventContributors(@PathVariable("eventId") Long eventId) {
+        return plannerService.findContributorsForEventId(eventId);
     }
 
     @PostMapping(path = "create")

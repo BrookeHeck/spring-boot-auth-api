@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -43,4 +44,12 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "planner_id")
     private Planner eventOwner;
+
+    @ManyToMany
+    @JoinTable(name = "event_contributors",
+        joinColumns = @JoinColumn(name = "event_id"),
+        inverseJoinColumns = @JoinColumn(name = "planner_id")
+    )
+    private Set<Planner> contributors;
+
 }

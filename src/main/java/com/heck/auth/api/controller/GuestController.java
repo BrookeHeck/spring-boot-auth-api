@@ -1,7 +1,7 @@
 package com.heck.auth.api.controller;
 
 import com.heck.auth.api.models.records.Guest;
-import com.heck.auth.api.services.implementations.GuestService;
+import com.heck.auth.api.services.implementations.GuestServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("guest")
 public class GuestController {
-    private final GuestService guestService;
+    private final GuestServiceImpl guestService;
 
     @GetMapping(path = "get/{guestId}")
     public Guest getGuestById(@PathVariable("guestId") Long guestId) {
