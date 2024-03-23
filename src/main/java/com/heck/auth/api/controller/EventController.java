@@ -13,27 +13,27 @@ import java.util.Collection;
 public class EventController {
     private final EventService eventService;
 
-    @GetMapping(path = "get/{eventId}")
+    @GetMapping(path = "/get/{eventId}")
     public Event getEventById(@PathVariable("eventId") Long eventId) {
         return eventService.getOne(eventId);
     }
 
-    @GetMapping(path = "get-all")
+    @GetMapping(path = "/get-all")
     public Collection<Event> getEvents() {
         return eventService.getAll();
     }
 
-    @PostMapping(path = "create")
+    @PostMapping(path = "/create")
     public Event createEvent(@RequestBody Event event) {
         return eventService.create(event);
     }
 
-    @PutMapping(path = "update")
+    @PutMapping(path = "/update")
     public Event updateEvent(@RequestBody Event event) {
         return eventService.update(event);
     }
 
-    @DeleteMapping(path = "delete/{eventId}")
+    @DeleteMapping(path = "/delete/{eventId}")
     public boolean deleteEvent(@PathVariable("eventId") Long eventId) {
         return eventService.delete(eventId);
     }
