@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -59,7 +60,7 @@ public class PlannerServiceImpl implements CrudService<Planner>, PlannerService 
     }
 
     @Override
-    public Planner findPlannerByEmail(String email) {
+    public Optional<Planner> findPlannerByEmail(String email) {
         return plannerRepository.findPlannerByEmail(email);
     }
 }
