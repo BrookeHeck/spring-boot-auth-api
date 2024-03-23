@@ -9,12 +9,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.util.Date;
 import java.util.function.Function;
 
 @Service
 public class JwtService {
     @Value("${spring.security.secret-key")
     private String SECRET_KEY;
+
+
+    private boolean isTokenExpired(String jwt) {
+        return extractExpiration(jwt).before(new Date());
+    }
+
+    private Date extractExpiration(String jwt) {
+        return extractClaim(jwt, Claims::getExpiration);
+    }
 
     public <T> T extractClaim(String jwt, Function<Claims, T> claimsResolver) {
         final Claims claims = exractAllClaims(jwt);
