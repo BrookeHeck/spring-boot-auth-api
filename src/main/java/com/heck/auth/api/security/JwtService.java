@@ -21,7 +21,7 @@ public class JwtService {
     @Value("${spring.security.secret-key")
     private String SECRET_KEY;
 
-    private String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }
 
@@ -40,7 +40,7 @@ public class JwtService {
         return username.equals(userDetails.getUsername()) &&  !isTokenExpired(jwt);
     }
 
-    private String extractUsername(String jwt) {
+    public String extractUsername(String jwt) {
         return extractClaim(jwt, Claims::getSubject);
     }
 
