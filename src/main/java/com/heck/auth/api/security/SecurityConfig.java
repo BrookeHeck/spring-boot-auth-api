@@ -27,7 +27,11 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/**")
+                        .requestMatchers("/planner/login")
+                        .permitAll()
+                        .requestMatchers("/planner/register")
+                        .permitAll()
+                        .requestMatchers("planner/reset-password/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
