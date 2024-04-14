@@ -25,8 +25,9 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final ModelMapper mapper;
 
-    public AuthenticationResponse register(PlannerDto plannerDto, String password) {
-        if(password == null || password.equals("")) throw new NullPointerException("Password is null or empty");
+    public AuthenticationResponse register(PlannerDto plannerDto, String basicAuthHeader) {
+        String decodedHeader = decodeBase65BasicAuth(basicAuthHeader);
+        String password = extractUserNameAndPassword(decodedHeader).split(":")[1];
         Planner planner = persistPlannerForRegistration(plannerDto, password);
         return AuthenticationResponse.builder()
                 .planner(mapper.map(planner, PlannerDto.class))
