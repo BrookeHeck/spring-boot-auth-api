@@ -27,15 +27,16 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(PlannerDto plannerDto, String password) {
         if(password == null || password.equals("")) throw new NullPointerException("Password is null or empty");
-        Planner planner = persistPlannerForRegistration(plannerDto);
+        Planner planner = persistPlannerForRegistration(plannerDto, password);
         return AuthenticationResponse.builder()
                 .planner(mapper.map(planner, PlannerDto.class))
                 .jwt(jwtService.generateToken(planner))
                 .build();
     }
 
-    private Planner persistPlannerForRegistration(PlannerDto plannerDto) {
+    private Planner persistPlannerForRegistration(PlannerDto plannerDto, String password) {
         Planner planner = mapper.map(plannerDto, Planner.class);
+        planner.setPassword(passwordEncoder.encode(password));
         planner.setLastLoginDate(LocalDate.now());
         planner.setLastPasswordDate(LocalDate.now());
         planner.setAccountStatus(PLANNER_ACCOUNT_STATUS.ACTIVE);
