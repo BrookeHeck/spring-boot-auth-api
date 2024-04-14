@@ -2,7 +2,6 @@ package com.heck.auth.api.models.records;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.heck.auth.api.models.enums.PLANNER_ACCOUNT_STATUS;
-import com.heck.auth.api.models.query.EventContributorsData;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -41,16 +39,16 @@ public class Planner implements UserDetails {
     @Column(name = "planner_id")
     private long id;
 
-    @Column(name = "planner_first_name")
+    @Column(name = "planner_first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "planner_last_name")
+    @Column(name = "planner_last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "planner_email", unique = true)
+    @Column(name = "planner_email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "avatar_img_name")

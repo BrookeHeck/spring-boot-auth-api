@@ -2,17 +2,18 @@ package com.heck.auth.api.security;
 
 import com.heck.auth.api.models.dtos.AuthenticationResponse;
 import com.heck.auth.api.models.dtos.PlannerDto;
+import com.heck.auth.api.models.enums.PLANNER_ACCOUNT_STATUS;
 import com.heck.auth.api.models.records.Planner;
 import com.heck.auth.api.services.implementations.PlannerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.Base64;
 
 @Service
@@ -24,6 +25,24 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final ModelMapper mapper;
 
+    public AuthenticationResponse register(PlannerDto plannerDto, String password) {
+        if(password == null || password.equals("")) throw new NullPointerException("Password is null or empty");
+        Planner planner = persistPlannerForRegistration(plannerDto);
+        return AuthenticationResponse.builder()
+                .planner(mapper.map(planner, PlannerDto.class))
+                .jwt(jwtService.generateToken(planner))
+                .build();
+    }
+
+    private Planner persistPlannerForRegistration(PlannerDto plannerDto) {
+        Planner planner = mapper.map(plannerDto, Planner.class);
+        planner.setLastLoginDate(LocalDate.now());
+        planner.setLastPasswordDate(LocalDate.now());
+        planner.setAccountStatus(PLANNER_ACCOUNT_STATUS.ACTIVE);
+        return planner;
+    }
+
+
     public AuthenticationResponse authenticate(String basicAuthHeader) {
         String decodedHeader = decodeBase65BasicAuth(basicAuthHeader);
         String[] usernameAndPassword = extractUserNameAndPassword(decodedHeader).split(":");
@@ -31,6 +50,7 @@ public class AuthenticationService {
         String password = usernameAndPassword[1];
         authenticateUserByEmailAndPassword(username, password);
         Planner planner = findPlannerAfterAuthenticated(username);
+        updatePlannerLastLoginDate(planner);
         return AuthenticationResponse.builder()
                 .planner(mapper.map(planner, PlannerDto.class))
                 .jwt(jwtService.generateToken(planner)).build();
@@ -52,6 +72,11 @@ public class AuthenticationService {
 
     private Planner findPlannerAfterAuthenticated(String email) {
         return plannerService.findPlannerByEmail(email).orElseThrow();
+    }
+
+    private void updatePlannerLastLoginDate(Planner planner) {
+        planner.setLastLoginDate(LocalDate.now());
+        plannerService.update(planner);
     }
 
 }
