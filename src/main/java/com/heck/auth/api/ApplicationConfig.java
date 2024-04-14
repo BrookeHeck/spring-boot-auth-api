@@ -1,6 +1,5 @@
 package com.heck.auth.api;
 
-import com.heck.auth.api.models.records.Planner;
 import com.heck.auth.api.services.implementations.PlannerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -10,13 +9,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Collections;
 
 @Configuration
 @RequiredArgsConstructor
@@ -35,7 +31,7 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> plannerService.findPlannerByEmail(username).orElseThrow(() ->
-                new UsernameNotFoundException("planner not found"));
+                new UsernameNotFoundException("planner not found for username: " + username));
     }
 
     @Bean
