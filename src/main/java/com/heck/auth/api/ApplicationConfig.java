@@ -1,7 +1,6 @@
 package com.heck.auth.api;
 
 import com.heck.auth.api.models.records.Planner;
-import com.heck.auth.api.services.PlannerService;
 import com.heck.auth.api.services.implementations.PlannerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -12,14 +11,12 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
-import java.util.Optional;
 
 @Configuration
 @RequiredArgsConstructor
@@ -37,19 +34,8 @@ public class ApplicationConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> {
-            Planner planner = plannerService.findPlannerByEmail(username).orElseThrow(() -> new UsernameNotFoundException("planner not found"));
-            return User
-                    .builder()
-                    .username(planner.getEmail())
-                    .password(planner.getPassword())
-                    .authorities(Collections.emptyList())
-                    .accountExpired(false)
-                    .accountLocked(false)
-                    .credentialsExpired(false)
-                    .disabled(false)
-                    .build();
-        };
+        return username -> plannerService.findPlannerByEmail(username).orElseThrow(() ->
+                new UsernameNotFoundException("planner not found"));
     }
 
     @Bean

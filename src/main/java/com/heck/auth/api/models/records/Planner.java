@@ -1,12 +1,17 @@
 package com.heck.auth.api.models.records;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.heck.auth.api.models.enums.PLANNER_ACCOUNT_STATUS;
 import com.heck.auth.api.models.query.EventContributorsData;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -30,7 +35,7 @@ import java.util.Set;
 //                        "join event_contributors e on p.planner_id = e.planner_id where e.event_id = :EVENT_ID",
 //                resultSetMapping = "eventContributorsData")
 //)
-public class Planner {
+public class Planner implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "planner_id")
@@ -42,7 +47,7 @@ public class Planner {
     @Column(name = "planner_last_name")
     private String lastName;
 
-    @Column(name = "planner_email")
+    @Column(name = "planner_email", unique = true)
     private String email;
 
     @Column(name = "password")
@@ -57,6 +62,15 @@ public class Planner {
     @ManyToMany(mappedBy = "contributors")
     private Set<Event> eventsContributed;
 
+    @Column(name = "planner_account_status")
+    PLANNER_ACCOUNT_STATUS accountStatus;
+
+    @Column(name = "last_login_date")
+    LocalDate lastLoginDate;
+
+    @Column(name = "last_password_update")
+    LocalDate lastPasswordDate;
+
     @Override
     public String toString() {
         return "Planner " + id + ": " + firstName + " " + lastName;
@@ -70,5 +84,36 @@ public class Planner {
     @JsonIgnore
     public Set<Event> getEventsContributed() {
         return eventsContributed;
+    }
+
+    @Override
+    public java.util.Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountStatus != PLANNER_ACCOUNT_STATUS.INACTIVE_60_DAYS;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountStatus != PLANNER_ACCOUNT_STATUS.INACTIVE_ADMIN_LOCK;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        LocalDate sixMonthsAgo = LocalDate.now().minusMonths(6);
+        return lastPasswordDate.isAfter(sixMonthsAgo);
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return accountStatus == PLANNER_ACCOUNT_STATUS.ACTIVE;
     }
 }
